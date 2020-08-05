@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import json
 import pymongo
-from config import settings
 import os
 
 bot = commands.Bot(commands_prefix = '!')
