@@ -36,7 +36,7 @@ async def plus_reputation_for_member(self, ctx, member: discord.Member):
 async def my_reps(self, ctx, member: discord.Member):
     res = collection.find({"_id": member.id})
     for i in res:
-	await ctx.send(i["rep"])
+        await ctx.send(i["rep"])
 
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
