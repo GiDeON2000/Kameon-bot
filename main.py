@@ -4,7 +4,7 @@ import json
 import pymongo
 import os
 
-bot = commands.Bot(commands_prefix = '!')
+bot = commands.Bot(command_prefix = '!')
 
 cluster = MongoClient("mongodb+srv://gideon:upitob32@cluster0.gy3lr.mongodb.net/<dbname>?retryWrites=true&w=majority")
 db = cluster["discord-bot"]
