@@ -39,4 +39,4 @@ async def my_reps(self, ctx, member: discord.Member):
 	await ctx.send(i["rep"])
 
 token = os.environ.get('BOT_TOKEN')
-bot.run(token)
+bot.run(str(token))
