@@ -26,10 +26,10 @@ async def on_ready():
 @bot.command(aliases=["+rep", "+реп"])
 async def plus_reputation_for_member(self, ctx, member: discord.Member):
     for x in collection.find({"_id": member.id}):
-	reps = x["rep"] = x["rep"] + 1
-	collection.update_one({"_id": member.id}, {"$set": {"rep": reps}})
-	emb = discord.Embed(title = f'+rep for {member.mention}', color = 0x0000FF)
-	await ctx.send(embed=emb)
+        reps = x["rep"] = x["rep"] + 1
+        collection.update_one({"_id": member.id}, {"$set": {"rep": reps}})
+        emb = discord.Embed(title = f'+rep for {member.mention}', color = 0x0000FF)
+        await ctx.send(embed=emb)
 
 
 @bot.command()
