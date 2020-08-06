@@ -18,7 +18,9 @@ async def on_ready():
   				collection.insert_one({
   				"_id": member.id,
   				"name": member.name,
-  				"rep": 0
+  				"rep": 0,
+                "lvl": 0,
+                "xp": 0
   				})
 	print('ok')
 
@@ -36,6 +38,19 @@ async def my_reps(ctx, member: discord.Member):
     res = collection.find({"_id": member.id})
     for i in res:
         await ctx.send(i["rep"])
+
+@bot.event
+async def on_message(message):
+    await bot.process_commands(message)
+    for x in collection.find("id": message.author.id):
+        xps = x["xp"] = x["xp"] + 50
+        collection.update_one({"_id": member.id}, {"$set": {"xp": xps}})
+        if x["xp"] > 100:
+            lvls = x["lvl"] = x["lvl"] + 1
+            collection.update_one({"_id": member.id}, {"$set": {"lvl": lvls}})
+            await ctx.send(f"Levelup! {x["lvl"]}")
+
+
 
 token = os.environ.get('BOT_TOKEN')
 bot.run(str(token))
