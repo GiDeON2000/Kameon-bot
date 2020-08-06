@@ -45,10 +45,12 @@ async def on_message(message):
     for x in collection.find({"id": message.author.id}):
         xps = x["xp"] = x["xp"] + 50
         collection.update_one({"_id": member.id}, {"$set": {"xp": xps}})
-        if x["xp"] > 100:
-            lvls = x["lvl"] = x["lvl"] + 1
-            collection.update_one({"_id": member.id}, {"$set": {"lvl": lvls}})
-            await ctx.send(f'Levelup! {x["lvl"]}')
+        xp = x["xp"]
+        lvl = x["lvl"]
+    if x["xp"] > 100:
+        lvls = lvl = lvl + 1
+        collection.update_one({"_id": member.id}, {"$set": {"lvl": lvls}})
+        await ctx.send(f'Levelup! {x["lvl"]}')
 
 
 
