@@ -42,6 +42,7 @@ async def my_reps(ctx, member: discord.Member):
 @bot.event
 async def on_message(message):
     await bot.process_commands(message)
+	print('11111')
     for x in collection.find({"id": message.author.id}):
         xps = x["xp"] = x["xp"] + 50; print(xps)
         collection.update_one({"_id": message.author.id}, {"$set": {"xp": xps}})
