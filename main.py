@@ -41,7 +41,6 @@ async def my_reps(ctx, member: discord.Member):
 
 @bot.event
 async def on_message(message):
-    await bot.process_commands(message)
 	await message.channel.send('hello')
     for x in collection.find({"id": message.author.id}):
         xps = x["xp"] = x["xp"] + 50
@@ -51,6 +50,7 @@ async def on_message(message):
             lvls = x["lvl"] = x["lvl"] + 1
             collection.update_one({"_id": message.author.id}, {"$set": {"lvl": lvls}})
             await massage.channel.send(f'Levelup! {x["lvl"]}')
+	await bot.process_commands(message)
 
 
 
