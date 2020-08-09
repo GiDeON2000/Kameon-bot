@@ -48,7 +48,7 @@ async def on_message(message):
         if x["xp"] > 100:
             lvls = x["lvl"] = x["lvl"] + 1
             collection.update_one({"_id": message.author.id}, {"$set": {"lvl": lvls}})
-            await ctx.send(f'Levelup! {x["lvl"]}')
+            await massage.channel.send(f'Levelup! {x["lvl"]}')
 
 
 
