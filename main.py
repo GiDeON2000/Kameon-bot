@@ -44,7 +44,8 @@ async def on_message(message):
     await bot.process_commands(message)
 	print('11111')
     for x in collection.find({"id": message.author.id}):
-        xps = x["xp"] = x["xp"] + 50; print(xps)
+        xps = x["xp"] = x["xp"] + 50
+		print(xps)
         collection.update_one({"_id": message.author.id}, {"$set": {"xp": xps}})
         if x["xp"] > 100:
             lvls = x["lvl"] = x["lvl"] + 1
